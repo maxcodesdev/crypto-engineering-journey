@@ -64,6 +64,8 @@ contract CounterTest is Test {
         assertEq(counter.number(), x);
     }
 
+
+
     function test_Fork_ReadFromMainnetCounter() public {
         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
 
@@ -73,6 +75,12 @@ contract CounterTest is Test {
         // Example: read the latest block number
         console2.log("Forked at block:", block.number);
     }
+
+
+function test_BrokenForCi() public {
+    assertEq(1, 2); // Will fail
+}
+
 
     function test_Fork_ReadUniswapV2Reserves() public {
         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
