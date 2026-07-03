@@ -64,7 +64,6 @@ contract CounterTest is Test {
         assertEq(counter.number(), x);
     }
 
-
     function test_Fork_ReadFromMainnetCounter() public {
         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
 
