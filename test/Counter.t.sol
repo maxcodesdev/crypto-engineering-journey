@@ -58,42 +58,29 @@ contract CounterTest is Test {
         assertEq(counter.number(), 456);
     }
 
-    // Fuzz test
-   function testFuzz_SetNumber(uint256 x) public {
-       counter.setNumber(x);
-       assertEq(counter.number(), x);
-   }
+    //testFuzz_SetNumber
+    function testFuzz_SetNumber(uint256 x) public {
+        counter.setNumber(x);
+        assertEq(counter.number(), x);
+    }
 
+    //test_Fork_ReadFromMainnetCounter
+    //     function test_Fork_ReadFromMainnetCounter() public {
+    //         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
+    //         console2.log("Forked at block:", block.number);
+    //     }
 
+    //test_Fork_ReadUniswapV2Reserves
+    //     function test_Fork_ReadUniswapV2Reserves() public {
+    //         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
+    //         address pair = 0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc;
+    //         IUniswapV2Pair uniswapPair = IUniswapV2Pair(pair);
+    //         (uint112 reserve0, uint112 reserve1,) = uniswapPair.getReserves();
+    //         assertGt(reserve0, 0);
+    //         assertGt(reserve1, 0);
+    //     }
+}
 
-//     function test_Fork_ReadFromMainnetCounter() public {
-//         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
-
-//         // At this point, we're on mainnet state.
-//         // We could read from any deployed contract here.
-
-//         // Example: read the latest block number
-//         console2.log("Forked at block:", block.number);
-//     }
-    
-
-//     function test_Fork_ReadUniswapV2Reserves() public {
-//         vm.createSelectFork(vm.envString("MAINNET_RPC_URL"));
-
-//         // The USDC/ETH Uniswap V2 pair on mainnet
-//         address pair = 0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc;
-
-//         IUniswapV2Pair uniswapPair = IUniswapV2Pair(pair);
-//         (uint112 reserve0, uint112 reserve1,) = uniswapPair.getReserves();
-
-//         console2.log("Reserve 0 (USDC):", reserve0);
-//         console2.log("Reserve 1 (WETH):", reserve1);
-
-//         assertGt(reserve0, 0);
-//         assertGt(reserve1, 0);
-//     }
-// }
-
-// interface IUniswapV2Pair {
-//     function getReserves() external view returns (uint112, uint112, uint32);
-// }
+interface IUniswapV2Pair {
+    function getReserves() external view returns (uint112, uint112, uint32);
+}
